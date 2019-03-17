@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+  }
+}
+
+html {
+  height: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
