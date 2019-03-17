@@ -36,6 +36,7 @@
     "@ngx-meta/core": "^7.0.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
+    "bootstrap": "^4.3.1",
     "core-js": "^2.6.5",
     "express": "^4.16.4",
     "firebase": "^5.9.0",

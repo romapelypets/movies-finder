@@ -22,13 +22,13 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/robots.txt",
-              "src/manifest.json"
+            "assets": ["src/favicon.ico", "src/assets", "src/robots.txt", "src/manifest.json"],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap-reboot.css",
+              "node_modules/bootstrap/dist/css/bootstrap-grid.css",
+              "src/assets/styles/main.scss",
+              "src/styles.scss"
             ],
-            "styles": ["src/assets/styles/main.scss", "src/styles.scss"],
             "scripts": [],
             "es5BrowserSupport": true
           },
@@ -106,12 +106,7 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": ["src/styles.scss"],
             "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/robots.txt",
-              "src/manifest.json"
-            ]
+            "assets": ["src/favicon.ico", "src/assets", "src/robots.txt", "src/manifest.json"]
           }
         },
         "lint": {
