@@ -5,8 +5,8 @@
     "paths": {
       "@app/*": ["app/*"],
       "@env/*": ["environments/*"],
-      "@shared/*": ["app/@shared/*"],
-      "@core/*": ["app/@core/*"]
+      "@shared/*": ["app/shared/*"],
+      "@core/*": ["app/core/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -17,12 +17,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"]
   }
 }
