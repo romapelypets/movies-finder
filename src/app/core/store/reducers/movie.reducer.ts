@@ -1,5 +1,5 @@
 import * as MovieAction from './../actions/movie.action';
-import { initialMovieState, IMovieState } from './../state/movie.state';
+import { initialMovieState } from './../state/movie.state';
 
 export function movieReducer(state = initialMovieState, action: MovieAction.Action) {
   switch (action.type) {

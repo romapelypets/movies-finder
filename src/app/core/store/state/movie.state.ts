@@ -1,11 +1,11 @@
-import { IMovie } from '@app/core/models/movie';
+import { Movie } from '@app/core/models/movie';
 
-export interface IMovieState {
-  movies: IMovie[];
-  selectedMovie: IMovie;
+export interface MovieState {
+  movies: Movie[];
+  selectedMovie: Movie;
 }
 
-export const initialMovieState: IMovieState = {
+export const initialMovieState: MovieState = {
   movies: [],
   selectedMovie: null
 };
