@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'movies-finder';
 
   constructor(private moviesService: MoviesService) {
-    moviesService.getPopularMovies().subscribe(item => {
+    this.moviesService.getPopularMovies().subscribe(item => {
       console.log(item);
     });
   }
