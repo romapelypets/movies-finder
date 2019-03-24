@@ -19,8 +19,8 @@ export class PopularMoviesComponent implements OnInit {
     this.store.dispatch(new LoadMovies());
 
     // Test Subscrive for Movies
-    this.$movies.subscribe(item => {
-      console.log(item);
-    });
+    // this.$movies.subscribe(item => {
+    //   console.log(item);
+    // });
   }
 }

@@ -5,10 +5,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthHeaderComponent } from './components/auth-header/auth-header.component';
 import { AuthFooterComponent } from './components/auth-footer/auth-footer.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, AuthHeaderComponent, AuthFooterComponent],
+  declarations: [HeaderComponent, FooterComponent, AuthHeaderComponent, AuthFooterComponent, PageTitleComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  exports: [HeaderComponent, FooterComponent, AuthHeaderComponent, AuthFooterComponent]
+  exports: [HeaderComponent, FooterComponent, AuthHeaderComponent, AuthFooterComponent, PageTitleComponent]
 })
 export class SharedModule {}

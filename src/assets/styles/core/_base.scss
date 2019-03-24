@@ -14,6 +14,20 @@ html {
 }
 
 body {
-  padding: 0;
+  // background-color: rgba($c-cedar-bleached, 0.7);
+  // background-color: $c-cedar-bleached;
+  // background: linear-gradient(to bottom, #b290ff, #2e1d65);
+  // background-size: cover;
+  /font-family: $main-font;
   margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $c-white;
 }
