@@ -4,8 +4,8 @@ import { MoviesComponent } from './movies.component';
 import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
 
 const routes: Routes = [
-  { path: '', component: MoviesComponent },
-  { path: 'popular', component: PopularMoviesComponent }
+  { path: '', pathMatch: 'full', redirectTo: 'popular' },
+  { path: '', component: MoviesComponent, children: [{ path: 'popular', component: PopularMoviesComponent }] }
 ];
 
 @NgModule({

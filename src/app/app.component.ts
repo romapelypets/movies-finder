@@ -1,4 +1,3 @@
-import { MoviesService } from './core/services/movies.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,9 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'movies-finder';
 
-  constructor(private moviesService: MoviesService) {
-    this.moviesService.getPopularMovies().subscribe(item => {
-      console.log(item);
-    });
-  }
+  constructor() {}
 }

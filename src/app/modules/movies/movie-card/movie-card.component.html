@@ -1,0 +1,10 @@
+<div class="movie">
+  <div class="movie__date">
+    {{ movie.release_date }}
+  </div>
+  <div class="movie__poster">
+    <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="{{ movie.title }}">
+  </div>
+  <div class="movie__title">{{ movie.title }}</div>
+  <div class="movie__rating">{{ movie.vote_average }}</div>
+</div>

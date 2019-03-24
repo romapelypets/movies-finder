@@ -24,4 +24,4 @@ export class GetMovie implements Action {
   constructor(public paylaod: Movie) {}
 }
 
-export type Action = GetMovies | GetMovie;
+export type Action = LoadMovies | GetMovies | LoadMovie | GetMovie;
