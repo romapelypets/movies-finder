@@ -37,5 +37,9 @@ export class MoviesService {
     );
   }
 
+  getTopRatedMovies() {
+    return this.http.get(this.movies_url + 'movie/top_rated' + '?api_key=' + this.movies_key);
+  }
+
   getUpcomingMovies() {}
 }
