@@ -1,15 +1,11 @@
 {
   "hosting": {
-    "public": "./dist/browser",
+    "public": "dist/browser",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "**/*.@(css|js)",
-        "destination": "/index-1.html"
-      },
-      {
         "source": "**",
-        "function": "ssr"
+        "destination": "/index.html"
       }
     ]
   }

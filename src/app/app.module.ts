@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '@env/environment';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { environment } from '@env/environment';
     AppRoutingModule,
     CoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })

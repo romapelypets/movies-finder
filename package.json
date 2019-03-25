@@ -9,6 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "deploy": "npm run prod && firebase deploy",
     "format:fix": "pretty-quick --staged",
     "ssr": "npm run build:universal && npm run generate:prerender && npm run server",
     "server": "node dist/server",

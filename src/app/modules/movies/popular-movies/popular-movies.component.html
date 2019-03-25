@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-4 col-xs-6 col-12" *ngFor="let movie of ($movies | async)?.movies">
+  <div class="col-md-4 col-sm-6 col-12" *ngFor="let movie of ($movies | async)?.movies">
     <app-movie-card [movie]="movie"></app-movie-card>
   </div>
 </div>
