@@ -30,7 +30,7 @@
   ],
   "dataGroups": [
     {
-      "name": "movies",
+      "name": "movies-api",
       "urls": [
         "https://api.themoviedb.org/3/**"
       ],

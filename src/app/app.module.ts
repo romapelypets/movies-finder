@@ -15,7 +15,7 @@ import { environment } from '@env/environment';
     BrowserModule.withServerTransition({ appId: 'my-app' }),
     AppRoutingModule,
     CoreModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {
+    ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),
     AngularFireModule.initializeApp(environment.firebase)
