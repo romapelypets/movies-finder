@@ -1,11 +1,13 @@
 {
-  "name": "movies-finder",
-  "short_name": "ng-starter",
+  "name": "Movies Finder",
+  "short_name": "Movies Finder",
+  "description": "Best Application for find the movies",
+  "orientation": "portrait",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "/",
-  "start_url": "index.html",
+  "start_url": "/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

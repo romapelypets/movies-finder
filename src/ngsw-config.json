@@ -10,6 +10,10 @@
           "/index.html",
           "/*.css",
           "/*.js"
+        ],
+        "url": [
+          "https://fonts.googleapis.com/css?family=Poppins:400,500,700",
+          "https://fonts.gstatic.com/**"
         ]
       }
     }, {
@@ -21,6 +25,19 @@
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "movies",
+      "urls": [
+        "https://api.themoviedb.org/3/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "6h",
+        "timeour": ""
       }
     }
   ]
