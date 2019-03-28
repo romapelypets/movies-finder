@@ -26,6 +26,7 @@
     font-size: 18px;
   }
   &__form {
+    padding: 50px;
     width: 60%;
     display: flex;
     justify-content: center;
@@ -42,10 +43,13 @@
       &:not(:last-of-type) {
         margin-right: 20px;
       }
-      button {
+      a {
         opacity: .7;
         transition: 300ms ease;
         transition-property: opacity;
+        &:hover {
+          color: $c-white;
+        }
         &:hover,
         &.active {
           opacity: 1;
@@ -60,5 +64,27 @@
     flex-grow: 1;
     flex-shrink: 0;
     max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .auth {
+    &__banner,
+    &__form {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .auth {
+    height: auto;
+    &__banner {
+      display: none;
+    }
+    &__form {
+      width: 100%;
+      padding: 30px;
+    }
   }
 }

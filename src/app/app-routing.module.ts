@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 /** TODO: Add firebase login */
 const routes: Routes = [
-  { path: '', redirectTo: 'movies', pathMatch: 'full' },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
   { path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule' },
   {
     path: 'movies',
