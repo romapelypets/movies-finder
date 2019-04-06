@@ -21,18 +21,16 @@ export class MoviesService {
   getPopularMovies(): Observable<Movie[]> {
     return this.http.get(this.movies_url + 'discover/movie?sort_by=popularity.desc' + '&api_key=' + this.movies_key).pipe(
       map((data: any) =>
-        data.results
-          // .sort((a: any, b: any) => (a.vote_average < b.vote_average ? 1 : -1))
-          .map((item: Movie) => {
-            return {
-              id: item.id,
-              title: item.title,
-              overview: item.overview,
-              poster_path: item.poster_path,
-              release_date: item.release_date,
-              vote_average: item.vote_average
-            };
-          })
+        data.results.map((item: Movie) => {
+          return {
+            id: item.id,
+            title: item.title,
+            overview: item.overview,
+            poster_path: item.poster_path,
+            release_date: item.release_date,
+            vote_average: item.vote_average
+          };
+        })
       )
     );
   }

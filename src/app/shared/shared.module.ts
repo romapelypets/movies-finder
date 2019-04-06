@@ -10,6 +10,6 @@ import { PageTitleComponent } from './components/page-title/page-title.component
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, AuthHeaderComponent, AuthFooterComponent, PageTitleComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  exports: [HeaderComponent, FooterComponent, AuthHeaderComponent, AuthFooterComponent, PageTitleComponent]
+  exports: [ReactiveFormsModule, HeaderComponent, FooterComponent, AuthHeaderComponent, AuthFooterComponent, PageTitleComponent]
 })
 export class SharedModule {}
