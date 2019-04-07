@@ -1,3 +1,16 @@
-<p>
-  sign-in works!
-</p>
+<form class="form form--auth" [formGroup]="signinForm" (ngSubmit)="onSubmitForm()">
+  <input 
+    type="email" 
+    class="form__field"
+    placeholder="Email"
+    formControlName="email">
+  <input 
+    type="password" 
+    class="form__field" 
+    placeholder="Password"
+    formControlName="password">
+  <button 
+    type="submit" 
+    class="form__submit btn btn--gradient"
+    [disabled]="!signinForm.valid">Submit</button>
+</form>

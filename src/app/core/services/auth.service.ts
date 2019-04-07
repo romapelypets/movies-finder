@@ -20,4 +20,19 @@ export class AuthService {
         this.toastr.error('Something happened...Try again!');
       });
   }
+
+  signinUser(user: User) {
+    this.afAuth.auth
+      .signInWithEmailAndPassword(user.email, user.password)
+      .then(() => {
+        console.log('signined');
+      })
+      .catch(() => {
+        console.log('error');
+      });
+  }
+
+  signOut() {
+    this.afAuth.auth.signOut();
+  }
 }
