@@ -28,4 +28,8 @@ export class AuthService {
   getToken() {
     return this.afAuth.auth.currentUser.getIdToken();
   }
+
+  public isAuthenticated() {
+    return this.getToken() !== null;
+  }
 }
