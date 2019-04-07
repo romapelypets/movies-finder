@@ -1,7 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { User } from './../../../core/models/user';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@app/core/services/auth.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +14,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {}
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit() {
     this.initSignupForm();
@@ -29,6 +32,17 @@ export class SignUpComponent implements OnInit {
       email: this.signupForm.controls['email'].value,
       password: this.signupForm.controls['password'].value
     };
-    this.authService.signupUser(user);
+    this.signupForm.disable();
+    this.authService
+      .signupUser(user)
+      .then(() => {
+        this.signupForm.enable();
+        this.toastr.success('You have successfully registered', 'Congratulations');
+        this.router.navigate(['/auth', 'login']);
+      })
+      .catch((error: HttpErrorResponse) => {
+        this.signupForm.enable();
+        this.toastr.error(error.message);
+      });
   }
 }

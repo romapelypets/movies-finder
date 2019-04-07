@@ -14,8 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
     EffectsModule.forRoot([MovieEffects]),
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-bottom-right',
+      // timeOut: 3000,
+      positionClass: 'toast-top-right',
       preventDuplicates: true
     })
   ],

@@ -1,38 +1,31 @@
-import { User } from './../models/user';
+import { User } from '@app/core/models/user';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import * as firebase from 'firebase/app';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth, private router: Router, private toastr: ToastrService) {}
+  constructor(private afAuth: AngularFireAuth) {}
 
   signupUser(user: User) {
-    this.afAuth.auth
-      .createUserWithEmailAndPassword(user.email, user.password)
-      .then(() => {
-        this.toastr.success('You have successfully registered', 'Congratulations');
-        this.router.navigate(['/auth', 'login']);
-      })
-      .catch(() => {
-        this.toastr.error('Something happened...Try again!');
-      });
+    return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
   }
 
   signinUser(user: User) {
-    this.afAuth.auth
-      .signInWithEmailAndPassword(user.email, user.password)
-      .then(() => {
-        console.log('signined');
-      })
-      .catch(() => {
-        console.log('error');
-      });
+    return this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+  }
+
+  signinWithGoogle() {
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   signOut() {
     this.afAuth.auth.signOut();
+  }
+
+  getToken() {
+    return this.afAuth.auth.currentUser.getIdToken();
   }
 }

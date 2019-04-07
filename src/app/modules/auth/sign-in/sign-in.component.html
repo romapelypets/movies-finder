@@ -11,6 +11,12 @@
     formControlName="password">
   <button 
     type="submit" 
-    class="form__submit btn btn--gradient"
-    [disabled]="!signinForm.valid">Submit</button>
+    class="form__submit form__submit--login btn btn--gradient"
+    [disabled]="!signinForm.valid">Login with Email</button>
 </form>
+
+<ul class="socials socials--auth">
+  <li class="socials__item">
+    <button type="button" class="btn btn--gmail" (click)="signinWithGoogle()">Login with Google</button>
+  </li>
+</ul>
