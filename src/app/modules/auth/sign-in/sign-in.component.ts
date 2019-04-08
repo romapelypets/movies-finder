@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../../../core/services/local-storage.service';
 import { Router } from '@angular/router';
 import { AuthService } from '@app/core/services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -5,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '@app/core/models/user';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +16,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class SignInComponent implements OnInit {
   signinForm: FormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, private toastr: ToastrService) {}
+  constructor(
+    private authService: AuthService,
+    private localStorage: LocalStorageService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.initSigninForm();
@@ -37,6 +45,14 @@ export class SignInComponent implements OnInit {
       .signinUser(user)
       .then(() => {
         this.signinForm.enable();
+        firebase.auth().onAuthStateChanged(currentUser => {
+          if (currentUser) {
+            currentUser.getIdToken().then(data => {
+              this.localStorage.setItem('token', data);
+            });
+          }
+        });
+        this.router.navigate(['/movies', 'popular']);
       })
       .catch((error: HttpErrorResponse) => {
         this.signinForm.enable();
