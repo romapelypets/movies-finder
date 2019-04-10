@@ -1,5 +1,61 @@
 .main-header {
+  padding: 12px 0;
   background-color: $c-gore-port;
   color: $c-white;
-  height: 64px;
+  // height: 64px;
+  display: flex;
+  align-content: center;
+  &__line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__logo {
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 100%;
+        max-width: 50px;
+        max-height: 50px;
+      }
+    }
+  }
+  &__nav {
+    margin-left: auto;
+  }
+}
+
+.nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  &__item {
+    &:not(:last-of-type) {
+      margin-right: 15px;
+    }
+    a {
+      color: $c-white;
+      position: relative;
+      &:before {
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $c-white;
+        transition: 200ms ease;
+        transition-property: width;
+        content: '';
+      }
+      &:hover {
+        &:before {
+          width: 100%;
+        }
+      }
+    }
+  }
 }

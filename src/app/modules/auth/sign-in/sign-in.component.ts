@@ -63,7 +63,16 @@ export class SignInComponent implements OnInit {
   signinWithGoogle() {
     this.authService
       .signinWithGoogle()
-      .then(() => {})
+      .then(() => {
+        firebase.auth().onAuthStateChanged(currentUser => {
+          if (currentUser) {
+            currentUser.getIdToken().then(data => {
+              this.localStorage.setItem('token', data);
+            });
+          }
+        });
+        this.router.navigate(['/movies', 'popular']);
+      })
       .catch((error: HttpErrorResponse) => {
         this.toastr.error(error.message);
       });

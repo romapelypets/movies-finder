@@ -9,11 +9,11 @@ import { Observable, of } from 'rxjs';
 export class NotAuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
   canActivate(next?: ActivatedRouteSnapshot, state?: RouterStateSnapshot): Observable<boolean> {
-    if (this.authService.isAuthenticated()) {
+    if (!this.authService.isAuthenticated()) {
+      return of(true);
+    } else {
       this.router.navigate(['/movies', 'popular']);
       return of(false);
-    } else {
-      return of(true);
     }
   }
 }

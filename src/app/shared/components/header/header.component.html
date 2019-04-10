@@ -1,1 +1,14 @@
-<header class="main-header"></header>
+<header class="main-header d-flex">
+ <div class="container d-flex">
+    <div class="main-header__line">
+      <div class="main-header__logo"><a [routerLink]="['/']" routerLinkActive="router-link-active"><img src="../../../../assets/images/logo.svg" alt="logo"></a></div>
+      <div class="main-header__nav">
+        <ul class="nav">
+          <li class="nav__item">
+            <a href="#" (click)="logout($event)">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
