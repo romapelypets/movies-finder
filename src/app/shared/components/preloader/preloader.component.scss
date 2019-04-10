@@ -5,6 +5,12 @@ svg {
 	display: none;
 }
 
+.preloader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 // Loader
 .blobs {
 	filter: url(#goo);

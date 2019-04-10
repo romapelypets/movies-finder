@@ -142,21 +142,6 @@ button {
   }
 }
 
-
-.preloader {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	&-wrapper {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		&--movies {
-			min-height: calc(100vh - 198px);
-		}
-	}
-}
-
 h1,
 h2,
 h3,
