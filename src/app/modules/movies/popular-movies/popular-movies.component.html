@@ -1,5 +1,5 @@
-<app-preloader *ngIf="($movies | async)?.movies.length === 0"></app-preloader>
-<ng-container *ngIf="($movies | async)?.movies.length !== 0">
+<app-preloader *ngIf="($movies | async)?.movies.length === 0; else popularMovies"></app-preloader>
+<ng-template #popularMovies>
   <div class="row">
     <div class="col-12">
       <app-page-title [content]="'Popular Movies'"></app-page-title>
@@ -10,4 +10,4 @@
       <app-movie-card [movie]="movie"></app-movie-card>
     </div>
   </div>
-</ng-container>
+</ng-template>
