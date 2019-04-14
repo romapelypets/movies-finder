@@ -16,20 +16,20 @@
             </li>
           </ul>
           <div class="movie-details__line">
-              <div class="movie-details__label">Rating</div>
-              <div class="movie-details__value">{{($movie | async)?.vote_average}}</div>
-            </div>
+            <div class="movie-details__label">Rating</div>
+            <div class="movie-details__value">{{($movie | async)?.vote_average}}</div>
+          </div>
           <div class="movie-details__line">
             <div class="movie-details__label">Release</div>
-            <div class="movie-details__value">{{($movie | async)?.release_date}}</div>
+            <div class="movie-details__value">{{($movie | async)?.release_date | date: 'mediumDate'}}</div>
           </div>
           <div class="movie-details__line">
             <div class="movie-details__label">Runtime</div>
-            <div class="movie-details__value"></div>
+            <div class="movie-details__value">{{($movie | async)?.runtime | minuteToHour}}</div>
           </div>
           <div class="movie-details__line">
             <div class="movie-details__label">Budget</div>
-            <div class="movie-details__value"></div>
+            <div class="movie-details__value">{{($movie | async)?.budget | currency}}</div>
           </div>
           <div class="movie-details__line">
             <div class="movie-details__label">Summary</div>

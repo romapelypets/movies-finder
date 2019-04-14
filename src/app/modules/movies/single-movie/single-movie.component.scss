@@ -53,10 +53,36 @@
   &__value {
     color: $c-bombay;
   }
-  // display: flex;
-  // &__poster,
-  // &__content {
-  //   flex-grow: 1;
-  //   flex-shrink: 0;
-  // }
+}
+
+@media screen and (max-width: 991px) {
+  .movie-details {
+    &__poster {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .movie-details {
+    padding: 20px;
+    &__poster {
+      margin-bottom: 15px;
+    }
+    &__title {
+      font-size: 24px;
+    }
+    &__category {
+      padding-left: 0;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+      &:before {
+        content: none;
+      }
+    }
+    &__line {
+      flex-direction: column;
+    }
+  }
 }

@@ -16,7 +16,6 @@ export class MoviesService {
 
   getMovie(id: number): Observable<Movie> {
     return this.http.get(this.movies_url + 'movie/' + id + '?api_key=' + this.movies_key).pipe(
-      tap(item => console.log(item)),
       map((item: Movie) => {
         return {
           id: item.id,
