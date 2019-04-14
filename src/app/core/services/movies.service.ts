@@ -14,8 +14,23 @@ export class MoviesService {
 
   constructor(private http: HttpClient) {}
 
-  getMovie(id: number) {
-    return this.http.get(this.movies_url + 'movie/' + id + '?api_key=' + this.movies_key);
+  getMovie(id: number): Observable<Movie> {
+    return this.http.get(this.movies_url + 'movie/' + id + '?api_key=' + this.movies_key).pipe(
+      tap(item => console.log(item)),
+      map((item: Movie) => {
+        return {
+          id: item.id,
+          title: item.title,
+          overview: item.overview,
+          poster_path: item.poster_path,
+          release_date: item.release_date,
+          vote_average: item.vote_average,
+          runtime: item.runtime,
+          budget: item.budget,
+          genres: item.genres
+        };
+      })
+    );
   }
 
   getPopularMovies(): Observable<Movie[]> {
@@ -28,7 +43,10 @@ export class MoviesService {
             overview: item.overview,
             poster_path: item.poster_path,
             release_date: item.release_date,
-            vote_average: item.vote_average
+            vote_average: item.vote_average,
+            runtime: item.runtime,
+            budget: item.budget,
+            genres: item.genres
           };
         })
       )

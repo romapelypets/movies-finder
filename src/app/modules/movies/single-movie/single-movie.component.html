@@ -1,0 +1,42 @@
+<app-preloader *ngIf="($movie | async) === null; else popularMovies"></app-preloader>
+<ng-template #popularMovies>
+  <div class="movie-details">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="movie-details__poster">
+          <img *ngIf="($movie | async)?.poster_path" src="https://image.tmdb.org/t/p/w500/{{ ($movie | async)?.poster_path }}" alt="{{ ($movie | async)?.title }}">
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="movie-details__content">
+          <h3 class="movie-details__title">{{($movie | async)?.title}}</h3>
+          <ul class="movie-details__category">
+            <li *ngFor="let genre of ($movie | async)?.genres" class="movie-details__category-item">
+              {{ genre.name }}
+            </li>
+          </ul>
+          <div class="movie-details__line">
+              <div class="movie-details__label">Rating</div>
+              <div class="movie-details__value">{{($movie | async)?.vote_average}}</div>
+            </div>
+          <div class="movie-details__line">
+            <div class="movie-details__label">Release</div>
+            <div class="movie-details__value">{{($movie | async)?.release_date}}</div>
+          </div>
+          <div class="movie-details__line">
+            <div class="movie-details__label">Runtime</div>
+            <div class="movie-details__value"></div>
+          </div>
+          <div class="movie-details__line">
+            <div class="movie-details__label">Budget</div>
+            <div class="movie-details__value"></div>
+          </div>
+          <div class="movie-details__line">
+            <div class="movie-details__label">Summary</div>
+            <div class="movie-details__value">{{($movie | async)?.overview}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

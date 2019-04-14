@@ -1,5 +1,5 @@
 import { LocalStorageService } from './../../../core/services/local-storage.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '@app/core/services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -21,6 +21,7 @@ export class SignInComponent implements OnInit {
     private localStorage: LocalStorageService,
     private formBuilder: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private toastr: ToastrService
   ) {}
 
@@ -49,11 +50,12 @@ export class SignInComponent implements OnInit {
           if (currentUser) {
             currentUser.getIdToken().then(data => {
               this.localStorage.setItem('token', data);
+              this.router.navigate(['/movies', 'popular'], { relativeTo: this.route });
             });
           }
         });
-        this.router.navigate(['/movies', 'popular']);
       })
+      .then(() => {})
       .catch((error: HttpErrorResponse) => {
         this.signinForm.enable();
         this.toastr.error(error.message);
@@ -68,10 +70,14 @@ export class SignInComponent implements OnInit {
           if (currentUser) {
             currentUser.getIdToken().then(data => {
               this.localStorage.setItem('token', data);
+              this.router.navigate(['/movies', 'popular'], { relativeTo: this.route });
             });
           }
         });
-        this.router.navigate(['/movies', 'popular']);
+      })
+      .then(() => {
+        console.log(this.route);
+        // this.router.navigate(['/movies', 'popular'], { relativeTo: this.route });
       })
       .catch((error: HttpErrorResponse) => {
         this.toastr.error(error.message);

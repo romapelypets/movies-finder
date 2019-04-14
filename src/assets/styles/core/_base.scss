@@ -79,6 +79,16 @@ button {
       background-color: $c-white;
     }
   }
+  &--main {
+    padding: 6px 30px;
+    color: $c-white;
+    background-color: $c-amaranth;
+    border: 2px solid $c-amaranth;
+    &:hover {
+      color: $c-amaranth;
+      background-color: transparent;
+    }
+  }
   // simple link
   &-link {
     background-color: transparent;

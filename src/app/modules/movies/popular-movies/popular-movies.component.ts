@@ -1,5 +1,5 @@
 import { Store, select } from '@ngrx/store';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppState } from '@app/core/store/state/app.state';
 import { selectMovies } from '@app/core/store/selectors/movie.selector';
 import { LoadMovies } from '@app/core/store/actions/movie.action';
