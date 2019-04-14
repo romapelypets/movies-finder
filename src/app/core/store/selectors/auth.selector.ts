@@ -1,0 +1,17 @@
+import { AuthState } from './../state/auth.state';
+import { AppState } from '@app/core/store/state/app.state';
+import { createSelector } from '@ngrx/store';
+
+export const selectAuth = (state: AppState) => state.auth;
+
+export const getAuth = createSelector(selectAuth);
+
+export const getAuthenticated = createSelector(
+  selectAuth,
+  (state: AuthState) => state.authenticated
+);
+
+export const getToken = createSelector(
+  selectAuth,
+  (state: AuthState) => state.token
+);

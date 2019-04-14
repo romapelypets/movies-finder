@@ -1,4 +1,3 @@
-import { LocalStorageService } from './local-storage.service';
 import { User } from '@app/core/models/user';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -8,7 +7,7 @@ import * as firebase from 'firebase/app';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth, private localStorage: LocalStorageService) {}
+  constructor(private afAuth: AngularFireAuth) {}
 
   signupUser(user: User) {
     return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
@@ -24,9 +23,5 @@ export class AuthService {
 
   signOut() {
     return this.afAuth.auth.signOut();
-  }
-
-  isAuthenticated() {
-    return this.localStorage.itemExist('token');
   }
 }

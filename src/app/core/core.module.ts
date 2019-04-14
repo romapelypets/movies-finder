@@ -5,6 +5,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { InboundInterceptor } from './interceptors/inbound.interceptor';
@@ -15,8 +16,8 @@ import { InboundInterceptor } from './interceptors/inbound.interceptor';
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([MovieEffects]),
     BrowserAnimationsModule,
+    StoreDevtoolsModule,
     ToastrModule.forRoot({
-      // timeOut: 3000,
       positionClass: 'toast-top-right',
       preventDuplicates: true
     })

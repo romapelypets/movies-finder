@@ -1,4 +1,6 @@
-import { AuthService } from '@app/core/services/auth.service';
+import { getAuthenticated } from './../store/selectors/auth.selector';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '@app/core/store/state/app.state';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -7,9 +9,16 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class NotAuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  isAuthenticated: boolean = false;
+  constructor(private router: Router, private store: Store<AppState>) {
+    this.store.pipe(select(getAuthenticated)).subscribe(isAuthenticated => {
+      console.log(isAuthenticated);
+      this.isAuthenticated = isAuthenticated;
+    });
+  }
   canActivate(next?: ActivatedRouteSnapshot, state?: RouterStateSnapshot): Observable<boolean> {
-    if (!this.authService.isAuthenticated()) {
+    console.log(this.isAuthenticated);
+    if (!this.isAuthenticated) {
       return of(true);
     } else {
       this.router.navigate(['/movies', 'popular']);
