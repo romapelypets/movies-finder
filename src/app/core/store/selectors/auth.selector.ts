@@ -8,7 +8,7 @@ export const getAuth = createSelector(selectAuth);
 
 export const getAuthenticated = createSelector(
   selectAuth,
-  (state: AuthState) => state.authenticated
+  (state: AuthState) => state.isAuthenticated
 );
 
 export const getToken = createSelector(

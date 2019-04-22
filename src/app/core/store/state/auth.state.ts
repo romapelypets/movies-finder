@@ -1,9 +1,12 @@
+import { User } from '@app/core/models/user';
 export interface AuthState {
   token: string;
-  authenticated: boolean;
+  isAuthenticated: boolean;
+  user: User;
 }
 
 export const initialAuthState: AuthState = {
   token: null,
-  authenticated: false
+  isAuthenticated: false,
+  user: null
 };

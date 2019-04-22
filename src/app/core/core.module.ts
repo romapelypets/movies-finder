@@ -1,3 +1,4 @@
+import { AuthEffects } from './store/effects/auth.effects';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { MovieEffects } from './store/effects/movie.effects';
 import { appReducer } from './store/reducers/app.reducer';
@@ -14,7 +15,7 @@ import { InboundInterceptor } from './interceptors/inbound.interceptor';
   imports: [
     HttpClientModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([MovieEffects]),
+    EffectsModule.forRoot([MovieEffects, AuthEffects]),
     BrowserAnimationsModule,
     StoreDevtoolsModule,
     ToastrModule.forRoot({

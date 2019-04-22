@@ -3,23 +3,26 @@ import { initialAuthState } from '../state/auth.state';
 
 export function authReducer(state = initialAuthState, action: AuthAction.Action) {
   switch (action.type) {
-    case AuthAction.SIGNUP:
     case AuthAction.SIGNIN:
       return {
         ...state,
-        authenticated: true
+        user: action.payload
       };
-    case AuthAction.LOGOUT:
+    case AuthAction.SIGNIN_GOOGLE:
+      return state;
+    case AuthAction.SIGNUP:
       return {
         ...state,
-        token: null,
-        authenticated: false
+        user: action.payload
       };
     case AuthAction.SET_TOKEN:
       return {
         ...state,
+        isAuthenticated: true,
         token: action.payload
       };
+    case AuthAction.LOGOUT:
+      return initialAuthState;
     default:
       return state;
   }

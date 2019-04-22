@@ -19,14 +19,6 @@ export class HeaderComponent implements OnInit {
 
   logout(event: Event) {
     event.preventDefault();
-    this.authService.signOut().then(
-      () => {
-        this.store.dispatch(new Logout());
-        this.router.navigate(['/auth', 'login']);
-      },
-      (error: HttpErrorResponse) => {
-        this.toastr.error(error.message);
-      }
-    );
+    this.store.dispatch(new Logout());
   }
 }
