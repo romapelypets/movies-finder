@@ -10,7 +10,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs/operators';
-import * as firebase from 'firebase/app';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
@@ -55,7 +54,7 @@ export class AuthEffects {
         .signupUser(user)
         .then(() => {
           this.toastr.success('You have successfully registered', 'Congratulations');
-          this.router.navigate(['/auth', 'login']);
+          this.router.navigate(['/auth', 'login'], { relativeTo: this.route });
         })
         .catch((error: HttpErrorResponse) => {
           this.toastr.error(error.message);
@@ -70,7 +69,7 @@ export class AuthEffects {
       return this.authService
         .signOut()
         .then(() => {
-          this.router.navigate(['/auth', 'login']);
+          this.router.navigate(['/auth', 'login'], { relativeTo: this.route });
           this.localStorage.clear();
         })
         .catch((error: HttpErrorResponse) => {
