@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MoviesComponent } from './movies.component';
 import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
+import { UpcomingMoviesComponent } from './upcoming-movies/upcoming-movies.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'popular' },
@@ -13,7 +14,8 @@ const routes: Routes = [
     children: [
       { path: 'popular', component: PopularMoviesComponent },
       { path: 'detailed/:id', component: SingleMovieComponent },
-      { path: 'top-rated', component: TopRatedMoviesComponent }
+      { path: 'top-rated', component: TopRatedMoviesComponent },
+      { path: 'upcoming', component: UpcomingMoviesComponent }
     ]
   }
 ];

@@ -33,29 +33,39 @@
   margin: 0;
   list-style: none;
   display: flex;
+  align-items: center;
   &__item {
+    $ni: &;
     &:not(:last-of-type) {
       margin-right: 30px;
     }
-    a {
-      color: $c-white;
-      position: relative;
-      &:before {
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: $c-white;
-        transition: 200ms ease;
-        transition-property: width;
-        content: '';
-      }
-      &:hover,
-      &.router-link-active {
+    &:not(#{$ni}--logout) {
+      a {
+        color: $c-white;
+        position: relative;
         &:before {
-          width: 100%;
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: $c-white;
+          transition: 200ms ease;
+          transition-property: width;
+          content: '';
         }
+        &:hover,
+        &.router-link-active {
+          &:before {
+            width: 100%;
+          }
+        }
+      }
+    }
+    &--logout {
+      display: flex;
+      a {
+        padding: 3px 15px;
       }
     }
   }

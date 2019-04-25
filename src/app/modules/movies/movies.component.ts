@@ -15,6 +15,10 @@ export class MoviesComponent implements OnInit {
     {
       title: 'Top Rated',
       url: 'top-rated'
+    },
+    {
+      title: 'Upcoming',
+      url: 'upcoming'
     }
   ];
   constructor() {}

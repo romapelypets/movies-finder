@@ -7,8 +7,8 @@
           <li class="nav__item" *ngFor="let item of navigation">
             <a [routerLink]="[item.url]" routerLinkActive="router-link-active">{{item.title}}</a>
           </li>
-          <li class="nav__item">
-            <a href="#" (click)="logout($event)">Logout</a>
+          <li class="nav__item nav__item--logout">
+            <a href="#" class="btn btn--main" (click)="logout($event)">Logout</a>
           </li>
         </ul>
       </div>

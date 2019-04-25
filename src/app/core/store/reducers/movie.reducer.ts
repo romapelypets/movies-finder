@@ -15,6 +15,12 @@ export function movieReducer(state = initialMovieState, action: MovieAction.Acti
         movies: action.payload
       };
     }
+    case MovieAction.GET_UPCOMING_MOVIES: {
+      return {
+        ...state,
+        movies: action.payload
+      };
+    }
     case MovieAction.GET_MOVIE: {
       return {
         ...state,

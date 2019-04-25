@@ -1,0 +1,13 @@
+<app-preloader *ngIf="($movies | async)?.movies.length === 0; else upcomingMovies"></app-preloader>
+<ng-template #upcomingMovies>
+  <div class="row">
+    <div class="col-12">
+      <app-page-title [content]="'Upcoming Movies'"></app-page-title>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-12" *ngFor="let movie of ($movies | async)?.movies">
+      <app-movie-card [movie]="movie"></app-movie-card>
+    </div>
+  </div>
+</ng-template>

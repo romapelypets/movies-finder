@@ -72,5 +72,27 @@ export class MoviesService {
     );
   }
 
-  getUpcomingMovies() {}
+  getUpcomingMovies(): Observable<Movie[]> {
+    return this.http.get(this.movies_url + 'movie/upcoming' + '?api_key=' + this.movies_key).pipe(
+      tap(data => console.log(data)),
+      map((data: any) =>
+        data.results.map((item: Movie) => {
+          return {
+            id: item.id,
+            title: item.title,
+            overview: item.overview,
+            poster_path: item.poster_path,
+            release_date: item.release_date,
+            vote_average: item.vote_average,
+            runtime: item.runtime,
+            budget: item.budget,
+            genres: item.genres
+          };
+        })
+      ),
+      map((data: any) => {
+        return data.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
+      })
+    );
+  }
 }
