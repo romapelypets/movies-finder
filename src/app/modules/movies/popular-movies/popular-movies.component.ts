@@ -17,10 +17,5 @@ export class PopularMoviesComponent implements OnInit {
   ngOnInit() {
     // Init Movies from Service
     this.store.dispatch(new LoadMovies());
-
-    // Test Subscrive for Movies
-    // this.$movies.subscribe(item => {
-    //   console.log(item);
-    // });
   }
 }

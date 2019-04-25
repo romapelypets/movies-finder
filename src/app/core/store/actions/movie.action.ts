@@ -17,6 +17,7 @@ export class GetMovies implements Action {
 
 export class LoadMovie implements Action {
   readonly type = LOAD_MOVIE;
+  constructor(public paylaod: number) {}
 }
 
 export class GetMovie implements Action {

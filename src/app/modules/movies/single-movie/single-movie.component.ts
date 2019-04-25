@@ -1,8 +1,12 @@
+import { LoadMovie } from './../../../core/store/actions/movie.action';
+import { Store, select } from '@ngrx/store';
+import { AppState } from './../../../core/store/state/app.state';
 import { Movie } from '@app/core/models/movie';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { MoviesService } from '@app/core/services/movies.service';
+import { selectMovie } from '@app/core/store/selectors/movie.selector';
 
 @Component({
   selector: 'app-single-movie',
@@ -10,18 +14,16 @@ import { MoviesService } from '@app/core/services/movies.service';
   styleUrls: ['./single-movie.component.scss']
 })
 export class SingleMovieComponent implements OnInit, OnDestroy {
-  movieID: number;
   paramsSubscription: Subscription;
-  movie: Movie;
   $movie: Observable<Movie>;
 
-  constructor(private route: ActivatedRoute, private moviesService: MoviesService) {}
+  constructor(private route: ActivatedRoute, private store: Store<AppState>) {}
 
   ngOnInit() {
     this.paramsSubscription = this.route.params.subscribe(params => {
-      this.movieID = params['id'];
+      this.store.dispatch(new LoadMovie(params['id']));
     });
-    this.$movie = this.moviesService.getMovie(this.movieID);
+    this.$movie = this.store.pipe(select(selectMovie));
   }
 
   ngOnDestroy() {
