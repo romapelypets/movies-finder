@@ -35,7 +35,7 @@
   display: flex;
   &__item {
     &:not(:last-of-type) {
-      margin-right: 15px;
+      margin-right: 30px;
     }
     a {
       color: $c-white;
@@ -51,7 +51,8 @@
         transition-property: width;
         content: '';
       }
-      &:hover {
+      &:hover,
+      &.router-link-active {
         &:before {
           width: 100%;
         }

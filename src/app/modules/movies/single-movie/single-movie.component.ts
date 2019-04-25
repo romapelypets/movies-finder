@@ -1,12 +1,11 @@
-import { LoadMovie } from './../../../core/store/actions/movie.action';
+import { AppState } from '@app/core/store/state/app.state';
 import { Store, select } from '@ngrx/store';
-import { AppState } from './../../../core/store/state/app.state';
 import { Movie } from '@app/core/models/movie';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
-import { MoviesService } from '@app/core/services/movies.service';
 import { selectMovie } from '@app/core/store/selectors/movie.selector';
+import { LoadMovie } from '@app/core/store/actions/movie.action';
 
 @Component({
   selector: 'app-single-movie',

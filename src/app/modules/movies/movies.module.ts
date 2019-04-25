@@ -6,9 +6,10 @@ import { MoviesComponent } from './movies.component';
 import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
+import { TopRatedMoviesComponent } from './top-rated-movies/top-rated-movies.component';
 
 @NgModule({
-  declarations: [MoviesComponent, PopularMoviesComponent, MovieCardComponent, SingleMovieComponent],
+  declarations: [MoviesComponent, PopularMoviesComponent, MovieCardComponent, SingleMovieComponent, TopRatedMoviesComponent],
   imports: [SharedModule, MoviesRoutingModule, CommonModule]
 })
 export class MoviesModule {}

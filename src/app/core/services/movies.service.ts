@@ -52,8 +52,24 @@ export class MoviesService {
     );
   }
 
-  getTopRatedMovies() {
-    return this.http.get(this.movies_url + 'movie/top_rated' + '?api_key=' + this.movies_key);
+  getTopRatedMovies(): Observable<Movie[]> {
+    return this.http.get(this.movies_url + 'movie/top_rated' + '?api_key=' + this.movies_key).pipe(
+      map((data: any) =>
+        data.results.map((item: Movie) => {
+          return {
+            id: item.id,
+            title: item.title,
+            overview: item.overview,
+            poster_path: item.poster_path,
+            release_date: item.release_date,
+            vote_average: item.vote_average,
+            runtime: item.runtime,
+            budget: item.budget,
+            genres: item.genres
+          };
+        })
+      )
+    );
   }
 
   getUpcomingMovies() {}

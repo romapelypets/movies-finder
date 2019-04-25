@@ -1,13 +1,22 @@
 import { Movie } from '@app/core/models/movie';
-import { LoadMovies, LoadMovie, LOAD_MOVIES, LOAD_MOVIE, GetMovies, GetMovie } from './../actions/movie.action';
+import {
+  LoadMovies,
+  LoadMovie,
+  LOAD_MOVIES,
+  LOAD_MOVIE,
+  GetMovies,
+  GetMovie,
+  LoadTopRatedMovies,
+  LOAD_TOP_RATED_MOVIES,
+  GetTopRatedMovies
+} from './../actions/movie.action';
 import { AppState } from './../state/app.state';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { switchMap, map, withLatestFrom } from 'rxjs/operators';
-import { Store, select } from '@ngrx/store';
+import { switchMap, map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { MoviesService } from '@app/core/services/movies.service';
-import { selectMovies } from '../selectors/movie.selector';
 
 @Injectable()
 export class MovieEffects {
@@ -16,6 +25,13 @@ export class MovieEffects {
     ofType<LoadMovies>(LOAD_MOVIES),
     switchMap(() => this.moviesService.getPopularMovies()),
     switchMap((movies: Movie[]) => of(new GetMovies(movies)))
+  );
+
+  @Effect()
+  $loadTopRatedMovies = this.actions$.pipe(
+    ofType<LoadTopRatedMovies>(LOAD_TOP_RATED_MOVIES),
+    switchMap(() => this.moviesService.getTopRatedMovies()),
+    switchMap((movies: Movie[]) => of(new GetTopRatedMovies(movies)))
   );
 
   @Effect()

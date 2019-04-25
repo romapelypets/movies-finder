@@ -1,3 +1,4 @@
+import { TopRatedMoviesComponent } from './top-rated-movies/top-rated-movies.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MoviesComponent } from './movies.component';
@@ -9,7 +10,11 @@ const routes: Routes = [
   {
     path: '',
     component: MoviesComponent,
-    children: [{ path: 'popular', component: PopularMoviesComponent }, { path: 'detailed/:id', component: SingleMovieComponent }]
+    children: [
+      { path: 'popular', component: PopularMoviesComponent },
+      { path: 'detailed/:id', component: SingleMovieComponent },
+      { path: 'top-rated', component: TopRatedMoviesComponent }
+    ]
   }
 ];
 

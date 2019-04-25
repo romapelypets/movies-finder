@@ -3,6 +3,8 @@ import { Movie } from '@app/core/models/movie';
 
 export const LOAD_MOVIES = '[MOVIE] LOAD_MOVIES';
 export const GET_MOVIES = '[MOVIE] GET_MOVIES';
+export const LOAD_TOP_RATED_MOVIES = '[MOVIE] LOAD_TOP_RATED_MOVIES';
+export const GET_TOP_RATED_MOVIES = '[MOVIE] GET_TOP_RATED_MOVIES';
 export const LOAD_MOVIE = '[MOVIE] LOAD_MOVIE';
 export const GET_MOVIE = '[MOVIE] GET_MOVIE';
 
@@ -12,6 +14,15 @@ export class LoadMovies implements Action {
 
 export class GetMovies implements Action {
   readonly type = GET_MOVIES;
+  constructor(public payload: Movie[]) {}
+}
+
+export class LoadTopRatedMovies implements Action {
+  readonly type = LOAD_TOP_RATED_MOVIES;
+}
+
+export class GetTopRatedMovies implements Action {
+  readonly type = GET_TOP_RATED_MOVIES;
   constructor(public payload: Movie[]) {}
 }
 
@@ -25,4 +36,4 @@ export class GetMovie implements Action {
   constructor(public paylaod: Movie) {}
 }
 
-export type Action = LoadMovies | GetMovies | LoadMovie | GetMovie;
+export type Action = LoadMovies | GetMovies | LoadMovie | GetMovie | LoadTopRatedMovies | GetTopRatedMovies;
