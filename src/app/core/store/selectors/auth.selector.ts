@@ -4,8 +4,6 @@ import { createSelector } from '@ngrx/store';
 
 export const selectAuth = (state: AppState) => state.auth;
 
-export const getAuth = createSelector(selectAuth);
-
 export const getAuthenticated = createSelector(
   selectAuth,
   (state: AuthState) => state.isAuthenticated
