@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuItem } from '@app/core/models/menu-item';
 
 @Component({
@@ -6,7 +6,7 @@ import { MenuItem } from '@app/core/models/menu-item';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent {
   navigation: MenuItem[] = [
     {
       title: 'Popular',
@@ -22,6 +22,4 @@ export class MoviesComponent implements OnInit {
     }
   ];
   constructor() {}
-
-  ngOnInit() {}
 }

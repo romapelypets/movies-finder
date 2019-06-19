@@ -8,18 +8,17 @@ describe('MoviesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoviesComponent ]
-    })
-    .compileComponents();
+      declarations: [MoviesComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MoviesComponent);
-    component = fixture.componentInstance;
+    component = fixture.debugElement.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create movies component', () => {
     expect(component).toBeTruthy();
   });
 });

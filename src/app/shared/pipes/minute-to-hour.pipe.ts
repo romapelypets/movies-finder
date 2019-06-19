@@ -8,6 +8,7 @@ export class MinuteToHourPipe implements PipeTransform {
     if (!value) {
       return null;
     }
-    return Math.floor(value / 60) + 'h ' + (value % 60) + 'min';
+    const hours = Math.floor(value / 60) !== 0 ? Math.floor(value / 60) + 'h ' : '';
+    return hours + (value % 60) + 'min';
   }
 }
