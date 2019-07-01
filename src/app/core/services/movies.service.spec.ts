@@ -51,11 +51,12 @@ fdescribe('MoviesService', () => {
           vote_average: 0,
           vote_count: 72,
           runtime: '100',
-          budget: 1
+          budget: 1,
+          genres: [{ id: 35, name: 'Comedy' }]
         }
       ],
-      total_pages: 17,
-      total_results: 323
+      total_pages: 1,
+      total_results: 1
     };
     const exp = [
       {
@@ -67,7 +68,7 @@ fdescribe('MoviesService', () => {
         vote_average: '0',
         runtime: '100',
         budget: 1,
-        genres: [{ id: 1, name: '' }]
+        genres: [{ id: 35, name: 'Comedy' }]
       }
     ];
     httpClientSpy.get.and.returnValue(of(fakeData));
