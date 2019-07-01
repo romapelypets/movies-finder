@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 import { User } from '@app/core/models/user';
 import { AngularFireModule } from '@angular/fire';
 
-fdescribe('AuthService', () => {
+describe('AuthService', () => {
   let authService: AuthService;
   let angularFireAuth: jasmine.SpyObj<AngularFireAuth>;
   const user: User = { email: 'email', password: 'password' };
@@ -48,11 +48,11 @@ fdescribe('AuthService', () => {
     angularFireAuth = TestBed.get(AngularFireAuth);
   });
 
-  fit('should be created', () => {
+  it('should be created', () => {
     expect(authService).toBeTruthy();
   });
 
-  fit('should call signInWithEmailAndPassword', () => {
+  it('should call signInWithEmailAndPassword', () => {
     // const spy = spyOn(angularFireAuth, 'signInWithEmailAndPassword').and.callThrough();
     authService.signinUser(user);
 
