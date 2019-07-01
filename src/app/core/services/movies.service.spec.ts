@@ -1,17 +1,21 @@
+import { Movie } from './../models/movie';
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { MoviesService } from './movies.service';
 import { environment } from '@env/environment';
+import { of } from 'rxjs';
 
-describe('MoviesService', () => {
+fdescribe('MoviesService', () => {
   let moviesService: MoviesService;
   let httpTestingController: HttpTestingController;
+  let httpClientSpy: { get: jasmine.Spy };
   let movies_url: string;
   let movies_key: string;
 
   beforeEach(async () => TestBed.configureTestingModule({ providers: [MoviesService], imports: [HttpClientTestingModule] }));
 
   beforeEach(() => {
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
     moviesService = TestBed.get(MoviesService);
     httpTestingController = TestBed.get(HttpTestingController);
     movies_url = environment.movies_url;
@@ -22,15 +26,55 @@ describe('MoviesService', () => {
     httpTestingController.verify();
   });
 
-  it('should be created', () => {
+  fit('should be created', () => {
     expect(moviesService).toBeTruthy();
   });
 
-  it('should test get api call: getPopular Movies', () => {
-    moviesService.getPopularMovies().subscribe(data => {
+  fit('should test get api call: getPopular Movies', () => {
+    const fakeData = {
+      dates: { maximum: '2019-07-27', minimum: '2019-06-30' },
+      page: 1,
+      results: [
+        {
+          adult: false,
+          backdrop_path: '/dzBtMocZuJbjLOXvrl4zGYigDzh.jpg',
+          genre_ids: [1],
+          id: 420818,
+          original_language: 'en',
+          original_title: 'The Lion King',
+          overview: 'Spider-Man: Far from Home',
+          popularity: 253.781,
+          poster_path: '/2cAc4qH9Uh2NtSujJ90fIAMrw7T.jpg',
+          release_date: '2019-07-12',
+          title: 'The Lion King',
+          video: false,
+          vote_average: 0,
+          vote_count: 72,
+          runtime: '100',
+          budget: 1
+        }
+      ],
+      total_pages: 17,
+      total_results: 323
+    };
+    const exp = [
+      {
+        id: 420818,
+        title: 'The Lion King',
+        overview: 'Spider-Man: Far from Home',
+        poster_path: '/dzBtMocZuJbjLOXvrl4zGYigDzh.jpg',
+        release_date: '2019-07-12',
+        vote_average: '0',
+        runtime: '100',
+        budget: 1,
+        genres: [{ id: 1, name: '' }]
+      }
+    ];
+    httpClientSpy.get.and.returnValue(of(fakeData));
+
+    moviesService.getPopularMovies().subscribe((data: Movie[]) => {
       expect(data).toBeDefined();
-      expect(data[0].title).toEqual('Dark Phoenix');
-      expect(data.length).toBe(20);
+      expect(data[0]).toEqual(exp[0]);
     });
     const req = httpTestingController.expectOne(movies_url + 'discover/movie?sort_by=popularity.desc' + '&api_key=' + movies_key);
     expect(req.request.method).toEqual('GET');

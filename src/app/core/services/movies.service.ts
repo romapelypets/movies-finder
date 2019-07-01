@@ -90,6 +90,7 @@ export class MoviesService {
           };
         })
       ),
+      tap(data => console.log(data)),
       map((data: any) => {
         return data.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
       })
