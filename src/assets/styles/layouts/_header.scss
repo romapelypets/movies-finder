@@ -2,11 +2,18 @@
   padding: 12px 0;
   background-color: $c-cedar-bleached;
   color: $c-white;
-  // height: 64px;
   display: flex;
   align-content: center;
+  transition: 300ms ease;
+  transition-property: box-shadow, padding;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 30;
   &__hamburger {
     display: none;
+    padding: 0;
   }
   &__line {
     display: flex;
@@ -88,12 +95,12 @@
       overflow-y: auto;
       position: fixed;
       text-align: left;
-      top: 85px;
+      top: 74px;
       bottom: 0;
       width: 255px;
       left: -255px;
       background-color: $c-cedar-bleached;
-      height: calc(100vh - 85px);
+      height: calc(100vh - 74px);
       z-index: 35;
       transition: all .5s ease-in-out;
       &.active {

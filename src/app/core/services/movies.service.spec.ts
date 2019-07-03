@@ -5,7 +5,7 @@ import { MoviesService } from './movies.service';
 import { environment } from '@env/environment';
 import { of } from 'rxjs';
 
-fdescribe('MoviesService', () => {
+describe('MoviesService', () => {
   let moviesService: MoviesService;
   let httpTestingController: HttpTestingController;
   let httpClientSpy: { get: jasmine.Spy };
@@ -26,11 +26,11 @@ fdescribe('MoviesService', () => {
     httpTestingController.verify();
   });
 
-  fit('should be created', () => {
+  it('should be created', () => {
     expect(moviesService).toBeTruthy();
   });
 
-  fit('should test get api call: getPopular Movies', () => {
+  it('should test get api call: getPopular Movies', () => {
     const fakeData = {
       dates: { maximum: '2019-07-27', minimum: '2019-06-30' },
       page: 1,

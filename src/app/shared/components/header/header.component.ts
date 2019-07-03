@@ -19,8 +19,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     /** Method for close the nagivation menu on router change */
     this.router.events.subscribe(item => {
-      console.log(item);
       this.isActiveMenu = false;
+      this.renderer.removeClass(document.body, 'no-scroll');
     });
   }
 
