@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Overlay } from '@angular/cdk/overlay';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
   // const mat = { openFromComponent: () => {} };
   const matSnackBar = jasmine.createSpyObj('MatSnackBar', ['openFromComponent']);
   beforeEach(async(() => {
@@ -25,13 +25,13 @@ fdescribe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  fit('should create the app', () => {
+  it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  fit('should call detectIOS on init', () => {
+  it('should call detectIOS on init', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     spyOn(app, 'detectIOS');
@@ -39,27 +39,23 @@ fdescribe('AppComponent', () => {
     expect(app.detectIOS).toHaveBeenCalled();
   });
 
-  fit('should call detect userAgent', done => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    spyOn(app, 'detectIOS').and.callThrough();
-    fixture.detectChanges();
-
-    spyOnProperty(window.navigator, 'userAgent').and.returnValue('iphone');
+  it('should call detect userAgent', () => {
+    // const fixture = TestBed.createComponent(AppComponent);
+    // const app = fixture.debugElement.componentInstance;
+    // spyOn(app, 'detectIOS').and.callThrough();
+    // fixture.detectChanges();
+    // spyOnProperty(window.navigator, 'userAgent').and.returnValue('iphone');
     // spyOnProperty(window as any, 'standalone').and.returnValue(false);
     // expect(window.navigator['standalone']).toBeUndefined();
-
     // setTimeout(() => {
     //   expect(matSnackBar.openFromComponent).toHaveBeenCalled();
     //   done();
     // });
-
     // app.detectIOS();
-
     // app.isIos();
   });
 
-  fit('should call standalone', () => {
+  it('should call standalone', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     // spyOn(app, 'detectIOS').and.callThrough();
@@ -69,7 +65,7 @@ fdescribe('AppComponent', () => {
     // app.isIos();
   });
 
-  fit('tests something async', () => {
+  it('tests something async', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     // setTimeout(() => {

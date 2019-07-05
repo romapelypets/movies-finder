@@ -11,33 +11,23 @@ describe('AuthService', () => {
   let authService: AuthService;
   let angularFireAuth: jasmine.SpyObj<AngularFireAuth>;
   const user: User = { email: 'email', password: 'password' };
-
-  const afAuth: any = { auth: jasmine.createSpy('signInWithEmailAndPassword') };
   const localStorage: any = { getItem: jasmine.createSpy('getItem') };
 
-  // const authState: MockUser = {
-  //   displayName: null,
-  //   isAnonymous: true,
-  //   uid: '17WvU2Vj58SnTz8v7EqyYYb0WRc2'
-  // };
-
-  // const mockAngularFireAuth: any = {
-  //   auth: jasmine.createSpyObj('auth', {
-  //     'signInAnonymously': Promise.reject({
-  //       code: 'auth/operation-not-allowed'
-  //     }),
-  //     // 'signInWithPopup': Promise.reject(),
-  //     // 'signOut': Promise.reject()
-  //   }),
-  //   authState: Observable.of(authState)
-  // };
+  const mockAngularFireAuth: any = {
+    auth: jasmine.createSpyObj('auth', {
+      signInWithPopup: Promise.resolve(),
+      createUserWithEmailAndPassword: Promise.resolve(),
+      signInWithEmailAndPassword: Promise.resolve(),
+      signOut: Promise.resolve()
+    })
+  };
 
   beforeEach(async () =>
     TestBed.configureTestingModule({
       imports: [AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule],
       providers: [
         AuthService,
-        { provide: AngularFireAuth, useValue: angularFireAuth },
+        { provide: AngularFireAuth, useValue: mockAngularFireAuth },
         { provide: LocalStorageService, useValue: localStorage }
       ]
     })
@@ -52,11 +42,28 @@ describe('AuthService', () => {
     expect(authService).toBeTruthy();
   });
 
-  it('should call signInWithEmailAndPassword', () => {
-    // const spy = spyOn(angularFireAuth, 'signInWithEmailAndPassword').and.callThrough();
-    authService.signinUser(user);
+  it('should call createUserWithEmailAndPassword', () => {
+    authService.signupUser(user).then(() => {});
+    expect(mockAngularFireAuth.auth.createUserWithEmailAndPassword).toHaveBeenCalledWith(user.email, user.password);
+  });
 
-    expect(afAuth.auth).toHaveBeenCalledWith(user);
-    // expect(afAuth).toHaveBeenCalledWith(user.email, user.password);
+  it('should call signInWithEmailAndPassword', () => {
+    authService.signinUser(user).then(() => {});
+    expect(mockAngularFireAuth.auth.signInWithEmailAndPassword).toHaveBeenCalledWith(user.email, user.password);
+  });
+
+  it('should call signInWithGoogle', () => {
+    authService.signinWithGoogle().then(() => {});
+    expect(mockAngularFireAuth.auth.signInWithEmailAndPassword).toHaveBeenCalled();
+  });
+
+  it('should call signOut', () => {
+    authService.signOut().then(() => {});
+    expect(mockAngularFireAuth.auth.signOut).toHaveBeenCalled();
+  });
+
+  it('should call getToken', () => {
+    authService.getToken();
+    expect(localStorage.getItem).toHaveBeenCalled();
   });
 });
