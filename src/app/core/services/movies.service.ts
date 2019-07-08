@@ -16,7 +16,6 @@ export class MoviesService {
 
   getMovie(id: number): Observable<Movie> {
     return this.http.get(this.movies_url + 'movie/' + id + '?api_key=' + this.movies_key).pipe(
-      tap(item => console.log(item)),
       map((item: Movie) => {
         return {
           id: item.id,
@@ -29,8 +28,7 @@ export class MoviesService {
           budget: item.budget,
           genres: item.genres
         };
-      }),
-      tap(item => console.log(item))
+      })
     );
   }
 
@@ -76,7 +74,6 @@ export class MoviesService {
 
   getUpcomingMovies(): Observable<Movie[]> {
     return this.http.get(this.movies_url + 'movie/upcoming' + '?api_key=' + this.movies_key).pipe(
-      tap(data => console.log(data)),
       map((data: any) =>
         data.results.map((item: Movie) => {
           return {
@@ -92,7 +89,6 @@ export class MoviesService {
           };
         })
       ),
-      tap(data => console.log(data)),
       map((data: any) => {
         return data.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
       })
