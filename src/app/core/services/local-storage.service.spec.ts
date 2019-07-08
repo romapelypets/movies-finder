@@ -21,6 +21,7 @@ describe('LocalStorageService', () => {
   });
 
   it('should return null for non existing items', () => {
+    localStorageService.removeItem('foo');
     expect(localStorageService.getItem('foo')).toBeNull();
   });
 
@@ -36,6 +37,7 @@ describe('LocalStorageService', () => {
   });
 
   it('should return that item does not exist', () => {
+    localStorageService.removeItem('foo');
     expect(localStorageService.itemExist('foo')).toBeFalsy();
   });
 
