@@ -54,7 +54,7 @@ describe('AuthService', () => {
 
   it('should call signInWithGoogle', () => {
     authService.signinWithGoogle().then(() => {});
-    expect(mockAngularFireAuth.auth.signInWithEmailAndPassword).toHaveBeenCalled();
+    expect(mockAngularFireAuth.auth.signInWithPopup).toHaveBeenCalled();
   });
 
   it('should call signOut', () => {

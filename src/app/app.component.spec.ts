@@ -1,13 +1,17 @@
-import { MatSnackBar, MatSnackBarContainer } from '@angular/material';
-import { TestBed, async } from '@angular/core/testing';
+import { IosInstallComponent } from './shared/components/ios-install/ios-install.component';
+import { MatSnackBar, MatSnackBarContainer, MatSnackBarModule } from '@angular/material';
+import { TestBed, async, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Overlay } from '@angular/cdk/overlay';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { tick } from '@angular/core/src/render3';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
 
 describe('AppComponent', () => {
-  // const mat = { openFromComponent: () => {} };
   const matSnackBar = jasmine.createSpyObj('MatSnackBar', ['openFromComponent']);
+  const overlay = jasmine.createSpyObj('Overlay', ['']);
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
@@ -19,10 +23,11 @@ describe('AppComponent', () => {
         },
         {
           provide: Overlay,
-          userValue: {}
+          userValue: { overlay }
         }
-      ]
-    }).compileComponents();
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    });
   }));
 
   it('should create the app', () => {
@@ -39,38 +44,20 @@ describe('AppComponent', () => {
     expect(app.detectIOS).toHaveBeenCalled();
   });
 
-  it('should call detect userAgent', () => {
-    // const fixture = TestBed.createComponent(AppComponent);
-    // const app = fixture.debugElement.componentInstance;
-    // spyOn(app, 'detectIOS').and.callThrough();
-    // fixture.detectChanges();
-    // spyOnProperty(window.navigator, 'userAgent').and.returnValue('iphone');
-    // spyOnProperty(window as any, 'standalone').and.returnValue(false);
-    // expect(window.navigator['standalone']).toBeUndefined();
-    // setTimeout(() => {
-    //   expect(matSnackBar.openFromComponent).toHaveBeenCalled();
-    //   done();
-    // });
-    // app.detectIOS();
-    // app.isIos();
-  });
-
-  it('should call standalone', () => {
+  it('should call detect userAgent and doesn"t call modal', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    // spyOn(app, 'detectIOS').and.callThrough();
-    // fixture.detectChanges();
-
-    // app.detectIOS();
-    // app.isIos();
-  });
-
-  it('tests something async', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    // setTimeout(() => {
-    //   expect(app.tost.).toBe(true);
-    //   done();
+    // spyOnProperty(window.navigator, 'userAgent').and.returnValue(true);
+    // window.navigator['__defineGetter__']('standalone', () => {
+    //   return false;
     // });
+    app.toast.openFromComponent(IosInstallComponent, {
+      duration: 8000,
+      horizontalPosition: 'start',
+      panelClass: ['mat-elevation-z3']
+    });
+    fixture.detectChanges();
+    expect(matSnackBar.openFromComponent.calls.count()).toEqual(0);
+    expect(matSnackBar.openFromComponent).not.toHaveBeenCalled();
   });
 });

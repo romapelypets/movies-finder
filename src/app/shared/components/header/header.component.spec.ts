@@ -1,4 +1,4 @@
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, RouterModule } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -50,8 +50,9 @@ describe('HeaderComponent', () => {
   });
 
   it('should subscrive on router change', () => {
-    router.navigate(['/movies', 'top-rated']).then(() => {
-      expect(component.isActiveMenu).toBeTruthy();
+    expect(component.isActiveMenu).toBeFalsy();
+    router.navigate(['/']).then(() => {
+      expect(component.isActiveMenu).toBeFalsy();
     });
   });
 
