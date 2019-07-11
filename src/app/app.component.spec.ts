@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { Overlay } from '@angular/cdk/overlay';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { tick } from '@angular/core/src/render3';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
   const matSnackBar = jasmine.createSpyObj('MatSnackBar', ['openFromComponent']);
