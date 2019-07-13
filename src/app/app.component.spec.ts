@@ -1,10 +1,8 @@
-import { IosInstallComponent } from './shared/components/ios-install/ios-install.component';
 import { MatSnackBar, MatSnackBarContainer, MatSnackBarModule } from '@angular/material';
 import { TestBed, async, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { Overlay } from '@angular/cdk/overlay';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
@@ -29,6 +27,14 @@ describe('AppComponent', () => {
     });
   }));
 
+  beforeEach(async(() => {
+    // jasmine.clock().install();
+  }));
+
+  afterEach(() => {
+    // jasmine.clock().uninstall();
+  });
+
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
@@ -44,10 +50,26 @@ describe('AppComponent', () => {
   });
 
   it('should call detect userAgent and doesn"t call modal', () => {
+    // const originalUserAgent = navigator.userAgent;
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     fixture.detectChanges();
-    spyOnProperty(window.navigator, 'userAgent').and.returnValue(true);
+    // const mockspy = jasmine.createSpyObj('window', 'standalone');
+
+    // mockspy.call
+
+    // spyOnProperty(app, 'isIos').and.callThrough();
+    // spyOn(app, 'isInStandaloneMode').and.callThrough();
+
+    // const userAgent = jasmine.createSpyObj(window.navigator)
+    // spyOn(app, 'isIos').and.returnValue(true);
+    // app.detectIOS();
+    // expect(app.title).toEqual('');
+    // jasmine.clock().tick(1);
+    // fixture.detectChanges();
+    // expect(app.title).toEqual('title');
+    // expect(matSnackBar.openFromComponent).toHaveBeenCalled();
+    // jasmine.clock().uninstall();
     // window.navigator['__defineGetter__']('standalone', () => {
     //   return false;
     // });

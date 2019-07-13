@@ -1,20 +1,33 @@
 <form class="form form--auth" [formGroup]="signinForm" (ngSubmit)="onSubmitForm()">
-  <input 
-    type="email" 
-    class="form__field"
-    placeholder="Email"
-    formControlName="email">
-  <input 
-    type="password" 
-    class="form__field" 
-    placeholder="Password"
-    formControlName="password">
-  <button 
-    type="submit" 
-    class="form__submit form__submit--login btn btn--gradient"
-    [disabled]="!signinForm.valid">Login with Email</button>
+  <div class="form__row">
+    <input 
+      type="email" 
+      class="form__field"
+      placeholder="Email"
+      formControlName="email">
+      <div *ngIf="signinForm.controls['email'].invalid && signinForm.controls['email'].errors.email"
+            class="form__message form__message--danger">
+            You have entered an invalid email
+      </div>
+  </div>
+  <div class="form__row">
+    <input 
+      type="password" 
+      class="form__field" 
+      placeholder="Password"
+      formControlName="password">
+      <div *ngIf="signinForm.controls['password']?.errors?.minlength"
+            class="form__message form__message--danger">
+            Minimum password length is 6 characters
+     </div>
+  </div>
+  <div class="form__row">
+    <button 
+      type="submit" 
+      class="form__submit form__submit--login btn btn--gradient"
+      [disabled]="!signinForm.valid">Login with Email</button>
+  </div>
 </form>
-
 <ul class="socials socials--auth">
   <li class="socials__item">
     <button type="button" class="btn btn--gmail" (click)="signinWithGoogle()">Login with Google</button>

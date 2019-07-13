@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     const isInStandaloneMode = () => 'standalone' in (window as any).navigator && (window as any).navigator.standalone;
 
     // Checks if should display install popup notification:
-    if (isIos()) {
+    if (isIos() && !isInStandaloneMode()) {
       setTimeout(() => {
         this.toast.openFromComponent(IosInstallComponent, {
           duration: 8000,

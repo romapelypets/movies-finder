@@ -69,7 +69,9 @@ export class AuthEffects {
       return this.authService
         .signOut()
         .then(() => {
-          this.router.navigate(['/auth', 'login'], { relativeTo: this.route });
+          this.ngZone.run(() => {
+            this.router.navigate(['/auth', 'login'], { relativeTo: this.route });
+          });
           this.localStorage.clear();
         })
         .catch((error: HttpErrorResponse) => {

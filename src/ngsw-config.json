@@ -35,7 +35,7 @@
         "https://api.themoviedb.org/3/**"
       ],
       "cacheConfig": {
-        "maxSize": 5,
+        "maxSize": 10,
         "maxAge": "6h",
         "timeour": ""
       }

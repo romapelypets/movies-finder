@@ -56,6 +56,12 @@ describe('HeaderComponent', () => {
     });
   });
 
+  it('should call go back method', () => {
+    spyOn(component, 'goBack').and.callThrough();
+    component.goBack();
+    expect(component.goBack).toHaveBeenCalled();
+  });
+
   it('should call renderer and remove class', () => {
     spyOn(renderer2, 'removeClass').and.callThrough();
     component.toggleMenu();

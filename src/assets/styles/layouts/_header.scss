@@ -11,9 +11,22 @@
   left: 0;
   width: 100%;
   z-index: 30;
+  &__back {
+    margin-left: auto;
+    margin-right: 15px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    svg {
+      width: 30px;
+      fill: $c-white;
+    }
+  }
   &__hamburger {
     display: none;
     padding: 0;
+    height: 24px;
   }
   &__line {
     display: flex;

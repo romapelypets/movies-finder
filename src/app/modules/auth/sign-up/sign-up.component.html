@@ -1,16 +1,30 @@
 <form class="form form--auth" [formGroup]="signupForm" (ngSubmit)="onSubmitForm()">
-  <input 
-    type="email" 
-    class="form__field"
-    placeholder="Email"
-    formControlName="email">
-  <input 
-    type="password" 
-    class="form__field" 
-    placeholder="Password"
-    formControlName="password">
-  <button 
-    type="submit" 
-    class="form__submit btn btn--gradient"
-    [disabled]="!signupForm.valid">Submit</button>
+  <div class="form__row">
+    <input 
+      type="email" 
+      class="form__field"
+      placeholder="Email"
+      formControlName="email">
+      <div *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].errors.email"
+            class="form__message form__message--danger">
+            You have entered an invalid email
+      </div>
+  </div>
+  <div class="form__row">
+    <input 
+      type="password" 
+      class="form__field" 
+      placeholder="Password"
+      formControlName="password">
+      <div *ngIf="signupForm.controls['password']?.errors?.minlength"
+            class="form__message form__message--danger">
+            Minimum password length is 6 characters
+      </div>
+  </div>
+  <div class="form__row">
+    <button 
+      type="submit" 
+      class="form__submit btn btn--gradient"
+      [disabled]="!signupForm.valid">Submit</button>
+  </div>
 </form>
