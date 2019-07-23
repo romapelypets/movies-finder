@@ -2,9 +2,32 @@
   padding: 12px 0;
   background-color: $c-cedar-bleached;
   color: $c-white;
-  // height: 64px;
   display: flex;
   align-content: center;
+  transition: 300ms ease;
+  transition-property: box-shadow, padding;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 30;
+  &__back {
+    margin-left: auto;
+    margin-right: 15px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    svg {
+      width: 30px;
+      fill: $c-white;
+    }
+  }
+  &__hamburger {
+    display: none;
+    padding: 0;
+    height: 24px;
+  }
   &__line {
     display: flex;
     align-items: center;
@@ -12,6 +35,8 @@
     width: 100%;
   }
   &__logo {
+    position: relative;
+    z-index: 40;
     a {
       display: flex;
       align-items: center;
@@ -66,6 +91,69 @@
       display: flex;
       a {
         padding: 3px 15px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main-header {
+    &__hamburger {
+      display: block;
+    }
+    &__nav {
+      // padding-top: 85px;
+      display: inline-block;
+      overflow-x: hidden;
+      overflow-y: auto;
+      position: fixed;
+      text-align: left;
+      top: 74px;
+      bottom: 0;
+      width: 255px;
+      left: -255px;
+      background-color: $c-cedar-bleached;
+      height: calc(100vh - 74px);
+      z-index: 35;
+      transition: all .5s ease-in-out;
+      &.active {
+        left: 0;
+        box-shadow: 10px 0px 72px 5px rgba($c-cedar-bleached, 0.45);
+      }
+    }
+  }
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    &__item {
+      $ni: &;
+      border-top: 1px solid $c-white;
+      width: 100%;
+      &:not(:last-of-type) {
+        margin-right: 0;
+      }
+      &:first-of-type {
+        border-top: 1px solid $c-white;
+      }
+      &--logout {
+        align-items: center;
+        // justify-content: center;
+        padding: 15px;
+      }
+      &:not(#{$ni}--logout) {
+        a {
+          display: inline-block;
+          padding: 15px 0 15px 15px;
+          font-size: 15px;
+          &:before {
+            content: none;
+          }
+          &:hover,
+          &.router-link-active {
+            font-weight: 700;
+          }
+        }
       }
     }
   }

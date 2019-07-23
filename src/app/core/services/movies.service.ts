@@ -74,7 +74,6 @@ export class MoviesService {
 
   getUpcomingMovies(): Observable<Movie[]> {
     return this.http.get(this.movies_url + 'movie/upcoming' + '?api_key=' + this.movies_key).pipe(
-      tap(data => console.log(data)),
       map((data: any) =>
         data.results.map((item: Movie) => {
           return {

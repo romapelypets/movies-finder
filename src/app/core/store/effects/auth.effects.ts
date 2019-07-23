@@ -7,7 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Signin, SIGNIN, Signup, SIGNUP, Logout, LOGOUT, SET_TOKEN, SigninGoogle, SIGNIN_GOOGLE } from './../actions/auth.action';
 import { AuthService } from '@app/core/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
@@ -69,7 +69,9 @@ export class AuthEffects {
       return this.authService
         .signOut()
         .then(() => {
-          this.router.navigate(['/auth', 'login'], { relativeTo: this.route });
+          this.ngZone.run(() => {
+            this.router.navigate(['/auth', 'login'], { relativeTo: this.route });
+          });
           this.localStorage.clear();
         })
         .catch((error: HttpErrorResponse) => {
@@ -84,7 +86,9 @@ export class AuthEffects {
     map((action: SetToken) => action.payload),
     tap((token: string) => {
       this.localStorage.setItem('token', token);
-      this.router.navigate(['/movies', 'popular'], { relativeTo: this.route });
+      this.ngZone.run(() => {
+        this.router.navigate(['/movies', 'popular'], { relativeTo: this.route });
+      });
     })
   );
 
@@ -95,6 +99,7 @@ export class AuthEffects {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private ngZone: NgZone
   ) {}
 }

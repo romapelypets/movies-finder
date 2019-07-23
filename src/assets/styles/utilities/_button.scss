@@ -1,0 +1,50 @@
+.btn {
+  cursor: pointer;
+  text-align: center;
+  padding: 8px 32px;
+  border: 0;
+  // border: 1px solid transparent;
+  outline: none;
+  font-size: 16px;
+  // border-radius: 25px;
+  border-radius: 6px;
+  transition: 200ms linear;
+  transition-property: color, background-color;
+  &--gradient {
+    color: $c-white;
+    background: linear-gradient(to bottom, $c-violet-vivid 0%, #9c3db1 34%, #ba3fc4 65%, #c340ca 100%);
+  }
+  &--gmail {
+    color: $c-white;
+    background-color: $c-google;
+    &:hover {
+      color: $c-google;
+      background-color: $c-white;
+    }
+  }
+  &--main {
+    padding: 6px 30px;
+    color: $c-white;
+    background-color: $c-amaranth;
+    border: 2px solid $c-amaranth;
+    &:hover {
+      color: $c-amaranth;
+      background-color: transparent;
+    }
+  }
+  // simple link
+  &-link {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    &--light {
+      color: $c-white;
+    }
+    &--dark {
+      color: $c-cedar-bleached;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}

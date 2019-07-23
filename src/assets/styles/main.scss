@@ -4,9 +4,19 @@
 // Core
 @import 'core/variables';
 @import 'core/base';
+// Utilities
+@import 'utilities/button';
+@import 'utilities/form';
 // Layouts
 @import 'layouts/header';
 @import 'layouts/footer';
 @import 'layouts/sidebar';
 @import 'layouts/toolbar';
 @import 'layouts/wrapper';
+// Layouts Auth
+@import 'layouts/auth/auth';
+// Layouts Movies
+@import 'layouts/movies/movie-card';
+@import 'layouts/movies/single-movie';
+// Libs
+@import 'libs/hamburgers-settings';
