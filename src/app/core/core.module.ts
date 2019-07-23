@@ -14,7 +14,14 @@ import { InboundInterceptor } from './interceptors/inbound.interceptor';
 @NgModule({
   imports: [
     HttpClientModule,
-    StoreModule.forRoot(appReducer),
+    StoreModule.forRoot(appReducer, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true
+      }
+    }),
     EffectsModule.forRoot([MovieEffects, AuthEffects]),
     BrowserAnimationsModule,
     StoreDevtoolsModule,
