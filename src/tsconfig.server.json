@@ -12,7 +12,7 @@
     "node_modules"
   ],
   "angularCompilerOptions": {
-    "entryModule": "app/app.server.module#AppServerModule",
-    "enableIvy": true
+    "entryModule": "app/app.server.module#AppServerModule"
+    // "enableIvy": true
   }
 }

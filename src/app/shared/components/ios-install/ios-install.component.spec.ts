@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IosInstallComponent } from './ios-install.component';
-import { MatSnackBarRef } from '@angular/material';
+import { MatSnackBarRef } from '@angular/material/snack-bar';
 
 describe('IosInstallComponent', () => {
   let component: IosInstallComponent;

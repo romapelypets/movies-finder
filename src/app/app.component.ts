@@ -1,6 +1,6 @@
 import { IosInstallComponent } from './shared/components/ios-install/ios-install.component';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
 @Component({
   selector: 'app-root',

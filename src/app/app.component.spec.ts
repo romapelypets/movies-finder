@@ -1,4 +1,4 @@
-import { MatSnackBar, MatSnackBarContainer, MatSnackBarModule } from '@angular/material';
+import { MatSnackBar, MatSnackBarContainer, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TestBed, async, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
