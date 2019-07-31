@@ -1,5 +1,5 @@
 # Advanced Movies Finder
-Based on [Angular 7 Starter](https://github.com/romapelypets/angular-starter)
+Based on [Angular 8 Starter](https://github.com/romapelypets/angular-starter)
 ## How to start
 - `npm install`
 - `npm run dev` - for development
