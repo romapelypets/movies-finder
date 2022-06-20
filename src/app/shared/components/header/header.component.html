@@ -7,12 +7,12 @@
           <li class="nav__item" *ngFor="let item of navigation">
             <a [routerLink]="[item.url]" routerLinkActive="router-link-active">{{item.title}}</a>
           </li>
-          <li class="nav__item nav__item--logout">
+          <!-- <li class="nav__item nav__item--logout">
             <a href="#" class="btn btn--main" (click)="logout($event)">Logout</a>
-          </li>
+          </li> -->
         </ul>
       </div>
-      <button 
+      <button
         type="button"
         class="main-header__back"
         *ngIf="isDetailedPage && isIOS"
@@ -26,8 +26,8 @@
           </g>
         </svg>
       </button>
-      <button type="button" 
-        class="main-header__hamburger hamburger hamburger--collapse" 
+      <button type="button"
+        class="main-header__hamburger hamburger hamburger--collapse"
         [ngClass]="{'is-active': isActiveMenu}"
         (click)="toggleMenu()">
           <span class="hamburger-box">
